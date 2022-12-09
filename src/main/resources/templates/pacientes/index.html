@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+    <head th:include="layout :: head"></head>
+
+    <body>
+        <nav th:replace="layout :: menu"></nav>
+        <main class="container">
+            <a href="/pacientes/novo" 
+                class="btn btn-primary">Novo</a>
+            <table class="table" id="tabpaciente">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nome</th>
+                        <th>Telefone</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="paciente : ${listaPacientes}">
+                        <td th:text="${paciente.id}"></td>
+                        <td th:text="${paciente.nome}"></td>
+                        <td th:text="${paciente.telefone}"></td>
+                        <td>
+                            <a th:href="@{'/pacientes/alterar/' + ${paciente.id}}"
+                                class="btn btn-warning">Alterar</a>
+                            <button class="btn btn-danger js-delete" th:data-id="${paciente.id}">Excluir</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </main>
+
+        <div class="modal" tabindex="-1" id="modalpaciente">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Excluir Paciente</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Confirma a exclusão do paciente?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="btnnao" data-bs-dismiss="modal">Não</button>
+                    <button type="button" class="btn btn-primary" id="btnsim">Sim</button>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <footer th:include="layout :: footer"></footer>
+        <script th:src="@{/scriptPaciente.js}"></script>
+    </body>
+</html>
