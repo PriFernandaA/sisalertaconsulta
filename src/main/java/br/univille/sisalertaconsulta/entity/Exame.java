@@ -17,21 +17,21 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Exame {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
     @ManyToOne
     private Clinica clinica;
     @ManyToOne
-    private Consulta consulta;
+    private Paciente paciente;
     @Column(length = 100)
     private String tipo;
-    @Temporal(TemporalType.DATE)
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+    @Temporal(value = TemporalType.TIMESTAMP)
     private Date data;
     
-    public int getId() {
+    public long getId() {
         return id;
     }
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
     public Clinica getClinica() {
@@ -40,11 +40,11 @@ public class Exame {
     public void setClinica(Clinica clinica) {
         this.clinica = clinica;
     }
-    public Consulta getConsulta() {
-        return consulta;
+    public Paciente getPaciente() {
+        return paciente;
     }
-    public void setConsulta(Consulta consulta) {
-        this.consulta = consulta;
+    public void setPaciente(Paciente paciente) {
+        this.paciente = paciente;
     }
     public String getTipo() {
         return tipo;

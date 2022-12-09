@@ -16,21 +16,21 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Pessoa {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
     @Column(length = 100)
     private String nome;
-    @Column(length = 11)
+    @Column(length = 30)
     private String telefone;
     @Column(length = 100)
     private String email;
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date dataNacimento;
+    private Date dataNascimento;
     
-    public int getId() {
+    public long getId() {
         return id;
     }
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
     public String getNome() {
@@ -51,10 +51,10 @@ public class Pessoa {
     public void setEmail(String email) {
         this.email = email;
     }
-    public Date getDataNacimento() {
-        return dataNacimento;
+    public Date getDataNascimento() {
+        return dataNascimento;
     }
-    public void setDataNacimento(Date dataNacimento) {
-        this.dataNacimento = dataNacimento;
+    public void setDataNascimento(Date dataNascimento) {
+        this.dataNascimento = dataNascimento;
     }
 }

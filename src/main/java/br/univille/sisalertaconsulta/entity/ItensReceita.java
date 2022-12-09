@@ -17,7 +17,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class ItensReceita {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
     @ManyToOne
     private Receita receita;
     @ManyToOne
@@ -28,10 +28,10 @@ public class ItensReceita {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date expiracao;
     
-    public int getId() {
+    public long getId() {
         return id;
     }
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
     public Receita getReceita() {

@@ -17,13 +17,9 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Receita {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
     @ManyToOne
     private Consulta consulta;
-    @ManyToOne
-    private Paciente paciente;
-    @ManyToOne
-    private Medico medico;
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date data;
@@ -33,10 +29,10 @@ public class Receita {
     @Column(length = 20)
     private String periodoRenovacaoString;
     
-    public int getId() {
+    public long getId() {
         return id;
     }
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
     public Consulta getConsulta() {
@@ -44,18 +40,6 @@ public class Receita {
     }
     public void setConsulta(Consulta consulta) {
         this.consulta = consulta;
-    }
-    public Paciente getPaciente() {
-        return paciente;
-    }
-    public void setPaciente(Paciente paciente) {
-        this.paciente = paciente;
-    }
-    public Medico getMedico() {
-        return medico;
-    }
-    public void setMedico(Medico medico) {
-        this.medico = medico;
     }
     public Date getData() {
         return data;

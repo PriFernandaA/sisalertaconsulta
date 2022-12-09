@@ -16,26 +16,28 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Consulta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
     @ManyToOne
-    private Pessoa pessoa;
+    private Paciente paciente;
     @ManyToOne
     private Medico medico;
-    @Temporal(TemporalType.DATE)
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @ManyToOne
+    private Clinica clinica;
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+    @Temporal(value = TemporalType.TIMESTAMP)
     private Date data;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
-    public Pessoa getPessoa() {
-        return pessoa;
+    public Paciente getPaciente() {
+        return paciente;
     }
-    public void setPessoa(Pessoa pessoa) {
-        this.pessoa = pessoa;
+    public void setPaciente(Paciente paciente) {
+        this.paciente = paciente;
     }
     public Medico getMedico() {
         return medico;
@@ -43,11 +45,16 @@ public class Consulta {
     public void setMedico(Medico medico) {
         this.medico = medico;
     }
+    public Clinica getClinica() {
+        return clinica;
+    }
+    public void setClinica(Clinica clinica) {
+        this.clinica = clinica;
+    }
     public Date getData() {
         return data;
     }
     public void setData(Date data) {
         this.data = data;
     }
-       
 }
