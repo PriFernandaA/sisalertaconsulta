@@ -9,6 +9,7 @@ import br.univille.sisalertaconsulta.entity.Exame;
 @Service
 public interface ExameService {
     List<Exame> getAll();
+    List<Exame> getAllByDate();
     Exame save(Exame exame);
     Exame findById(long id);
     void delete(long id);

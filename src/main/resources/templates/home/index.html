@@ -3,11 +3,54 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
     <head th:include="layout :: head"></head>
-
+    <head>
+        <link rel="stylesheet" th:href="@{/styles/home.css}">
+    </head>
     <body>
         <nav th:replace="layout :: menu"></nav>
         <main class="container">
-            <p th:text="${valor}" class="btn btn-primary"></p>  
+            <label for="tabconsulta"><h5>Próximas consultas:</h5></label>
+            <table class="table" id="tabconsulta">
+                <thead>
+                    <tr>
+                        <th>Data</th>
+                        <th>Paciente</th>
+                        <th>Clinica</th>
+                        <th>Endereço</th>
+                        <th>Tipo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="consulta : ${listaConsultas}">
+                        <td th:text="${#dates.format(consulta.data, 'dd/MM/yyyy HH:mm')}"></td>
+                        <td th:text="${consulta.paciente?.getNome()}"></td>
+                        <td th:text="${consulta.clinica?.getNome()}"></td>
+                        <td th:text="${consulta.clinica?.getEndereco()}"></td>
+                        <td th:text="${consulta.medico?.getEspecialidade()}"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <label for="tabconsulta"><h5>Próximos exames:</h5></label>
+            <table class="table" id="tabexame">
+                <thead>
+                    <tr>
+                        <th>Data</th>
+                        <th>Paciente</th>
+                        <th>Clinica</th>
+                        <th>Endereço</th>
+                        <th>Tipo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="exame : ${listaExames}">
+                        <td th:text="${#dates.format(exame.data, 'dd/MM/yyyy HH:mm')}"></td>
+                        <td th:text="${exame.paciente?.getNome()}"></td>
+                        <td th:text="${exame.clinica?.getNome()}"></td>
+                        <td th:text="${exame.clinica?.getEndereco()}"></td>
+                        <td th:text="${exame.tipo}"></td>
+                    </tr>
+                </tbody>
+            </table>
         </main>
         <footer th:include="layout :: footer"></footer>
     </body>

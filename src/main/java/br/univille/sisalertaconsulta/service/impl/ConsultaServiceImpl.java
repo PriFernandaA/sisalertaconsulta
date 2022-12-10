@@ -1,5 +1,6 @@
 package br.univille.sisalertaconsulta.service.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,11 @@ public class ConsultaServiceImpl implements ConsultaService {
     @Override
     public List<Consulta> getAll() {
         return repositorio.findAll();
+    }
+
+    @Override
+    public List<Consulta> getAllByDate() {
+        return repositorio.findAllByDataAfterOrderByDataAsc(new Date());
     }
 
     @Override
