@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+    <head th:include="layout :: head"></head>
+
+    <body>
+        <nav th:replace="layout :: menu"></nav>
+        <main class="container">
+            <a href="/consultas/novo" 
+                class="btn btn-primary">Novo</a>
+            <table class="table" id="tabconsulta">
+                <thead>
+                    <tr>
+                        <th>Data</th>
+                        <th>Paciente</th>
+                        <th>Clinica</th>
+                        <th>Endereço</th>
+                        <th>Especialidade</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="consulta : ${listaConsultas}">
+                        <td th:text="${#dates.format(consulta.data, 'dd/MM/yyyy HH:mm')}"></td>
+                        <td th:text="${consulta.paciente?.getNome()}"></td>
+                        <td th:text="${consulta.clinica?.getNome()}"></td>
+                        <td th:text="${consulta.clinica?.getEndereco()}"></td>
+                        <td th:text="${consulta.medico?.getEspecialidade()}"></td>
+                        <td>
+                            <a th:href="@{'/consultas/alterar/' + ${consulta.id}}"
+                                class="btn btn-warning">Alterar</a>
+                            <button class="btn btn-danger js-delete" th:data-id="${consulta.id}">Excluir</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </main>
+
+        <div class="modal" tabindex="-1" id="modalconsulta">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Excluir Consulta</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Confirma a exclusão do consulta?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="btnnao" data-bs-dismiss="modal">Não</button>
+                    <button type="button" class="btn btn-primary" id="btnsim">Sim</button>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <footer th:include="layout :: footer"></footer>
+        <script th:src="@{/scriptConsulta.js}"></script>
+    </body>
+</html>
