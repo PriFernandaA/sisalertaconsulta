@@ -29,23 +29,23 @@ O projeto foi desenvolvido com spring framework e thymeleaf.
 
 ###### Exemplo: 
 
-`
-spring.datasource.driver-class-name=org.mariadb.jdbc.Driver
-spring.datasource.url=jdbc:mariadb://localhost:3306/sisalertaconsulta
-spring.datasource.username=SECRETO
-spring.datasource.password=ULTRA_SECRETO
-`
+````
+    spring.datasource.driver-class-name=org.mariadb.jdbc.Driver
+    spring.datasource.url=jdbc:mariadb://localhost:3306/sisalertaconsulta
+    spring.datasource.username=SECRETO
+    spring.datasource.password=ULTRA_SECRETO
+````
 
 ### Executar a aplicação
 
 * Baixar extesao Spring Boot Dashboard no VSCODE.
 
-![Instalar extensao Spring Boot  Dashboard no VSCODE.](/image/sample.png)
+![Instalar extensao Spring Boot  Dashboard no VSCODE.](/image/springextensao.png)
 
 * Acionar Spring Boot Dashboard no menu lateral.
 
-![Acionar Spring Boot Dashboard no menu lateral.](/image/sample.png)
+![Acionar Spring Boot Dashboard no menu lateral.](/image/springmenu.png)
 
 * Clicar no icone de Play do lado do nome sisalertaconsulta.
 
-![Clicar no icone de Play do lado do nome sisalertaconsulta.](/image/sample.png)
+![Clicar no icone de Play do lado do nome sisalertaconsulta.](/image/springstart.png)
